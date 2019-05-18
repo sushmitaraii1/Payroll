@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MVCLogin.Models.EmployeeInformation>
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["userId"] == null)
+    {
+        Response.Redirect("~/Login/");
+    }
+}
+
+<h2>Employee List</h2>
+
+<p>
+    @Html.ActionLink("Add new employee", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.E_mail_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contact_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th></th>
+    </tr>
+
+    `@foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.E_mail_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contact_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EmployeeId /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>

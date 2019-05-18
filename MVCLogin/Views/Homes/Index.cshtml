@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        .header {
+            height: 50px;
+            width: 100%;
+            background-color: #c3c3c3;
+            margin-top: -10px;
+        }
+
+        .logout {
+            float: right;
+            padding-right: 25px;
+            text-decoration: none;
+            font-size: 25px;
+            margin-top: -50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>EMPAYEE</h1>
+        <a href=" @Url.Action("LogOut","Login")" class="logout">  LogOut</a>
+    </div>
+</body>
+</html>
